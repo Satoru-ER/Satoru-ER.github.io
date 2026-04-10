@@ -2,82 +2,73 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Satoru ChalkNote Official</title>
-
+<title>Book UI</title>
 <style>
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    color: #333;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
 }
 
 header {
-    background: #111;
-    color: white;
-    padding: 30px;
-    text-align: center;
+  background: #222;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
 }
 
-section {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
 }
 
-h2 {
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
+/* サイドバー */
+.sidebar {
+  width: 220px;
+  background: #333;
+  color: white;
+  padding: 10px;
+}
+
+.book-btn {
+  display: block;
+  padding: 10px;
+  margin: 8px 0;
+  background: #444;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.book-btn:hover {
+  background: #666;
+}
+
+/* メイン */
+.main {
+  flex: 1;
+  padding: 20px;
 }
 
 .card {
-    background: white;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.video-container {
-    text-align: center;
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-video {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-}
-
-/* タブスタイル */
-.tabs {
-    display: flex;
-    margin-top: 20px;
-    border-bottom: 2px solid #ccc;
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background: #eee;
-    margin-right: 5px;
-    transition: 0.2s;
-}
-
-.tab.active {
-    background: white;
-    border-bottom: 2px solid white;
-    font-weight: bold;
-}
-
-.tab-content {
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
+.tag {
+  display: inline-block;
+  background: #0078ff;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 12px;
 }
 </style>
 </head>
@@ -85,100 +76,53 @@ video {
 <body>
 
 <header>
-    <h1>ChalkNote Official</h1>
+📚 BOOK UI - 本紹介システム
 </header>
 
-<section>
-    <h2>🎬 ティザー公開</h2>
-    <div class="card video-container">
-        <video controls>
-            <source src="teaser.mp4" type="video/mp4">
-            お使いのブラウザでは動画が再生できません。
-        </video>
-    </div>
-</section>
+<div class="container">
 
-<section>
-    <h2>🛠 アップデート情報</h2>
+  <!-- サイドバー -->
+  <div class="sidebar">
+    <div class="book-btn" onclick="showBook(0)">嫌われる勇気</div>
+    <div class="book-btn" onclick="showBook(1)">君の名は。</div>
+    <div class="book-btn" onclick="showBook(2)">ノルウェイの森</div>
+  </div>
 
-    <div class="tabs">
-        <div class="tab active" data-tab="stable">Stable</div>
-        <div class="tab" data-tab="beta">Beta</div>
-        <div class="tab" data-tab="canary">Canary</div>
-    </div>
-
-    <div class="tab-content active" id="stable">
-        <div class="card">
-            <p><strong>アプリバージョン:</strong> null</p>
-            <p><strong>リリース日:</strong> null</p>
-            <p><strong>リリースノート:</strong> null</p>
-            <p><strong>修正点:</strong></p>
-            <ul>
-                <li>null</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="tab-content" id="beta">
-        <div class="card">
-            <p><strong>アプリバージョン:</strong> Ver0.9.2</p>
-            <p><strong>リリース日:</strong> 2026.02.25</p>
-            <p><strong>リリースノート:</strong> 新機能追加・動作改善</p>
-            <p><strong>修正点:</strong></p>
-            <ul>
-                <li>共通ホームにて画像が見れない問題の修正</li>
-                <li>一部AI機能統合</li>
-                <li>コメント機能実装</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="tab-content" id="canary">
-        <div class="card">
-            <p><strong>アプリバージョン:</strong> Ver0.9.3.1</p>
-            <p><strong>リリース日:</strong> 2026.02.28</p>
-            <p><strong>リリースノート:</strong> SQLite（データベース）テスト</p>
-            <p><strong>修正点:</strong></p>
-            <ul>
-                <li>より安定した動作とセキュリティのテスト実装</li>
-                <li>MP4再生のテスト実装</li>
-                <li>新UIアイコン追加</li>
-            </ul>
-        </div>
-    </div>
-
-</section>
-
-<section>
-    <h2>📱 アプリ概要</h2>
+  <!-- メイン -->
+  <div class="main">
     <div class="card">
-        <p><strong>ChalkNote</strong> は黒板記録を効率化するアプリです。</p>
-        <ul>
-            <li>わかりやすく。</li>
-        </ul>
+      <div class="title" id="title">本を選択してね</div>
+      <div id="desc">左から本をクリックすると詳細が出るよ</div>
+      <div id="tag"></div>
     </div>
-</section>
+  </div>
 
-<footer>
-    © 2026 Satoru
-</footer>
+</div>
 
 <script>
-// タブ切替処理
-const tabs = document.querySelectorAll('.tab');
-const contents = document.querySelectorAll('.tab-content');
+const books = [
+  {
+    title: "嫌われる勇気",
+    desc: "アドラー心理学をベースにした対話形式の本。自分の生き方を考えさせられる。",
+    tag: "心理学"
+  },
+  {
+    title: "君の名は。",
+    desc: "入れ替わりをテーマにした青春SFストーリー。映画でも有名。",
+    tag: "小説"
+  },
+  {
+    title: "ノルウェイの森",
+    desc: "青春と喪失を描いた村上春樹の代表作。",
+    tag: "文学"
+  }
+];
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // 全タブ非アクティブ
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-
-        // クリックしたタブをアクティブ化
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-});
+function showBook(i) {
+  document.getElementById("title").innerText = books[i].title;
+  document.getElementById("desc").innerText = books[i].desc;
+  document.getElementById("tag").innerHTML = `<span class="tag">${books[i].tag}</span>`;
+}
 </script>
 
 </body>
