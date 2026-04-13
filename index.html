@@ -127,6 +127,12 @@ header {
   color: #49454f;
 }
 
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap; /* 画面狭くても折り返す */
+}
+
 .tag {
   display: inline-block;
   padding: 6px 12px;
@@ -168,7 +174,11 @@ header {
       <p class="eyebrow">Featured Book</p>
       <h1 class="title">嫌われる勇気</h1>
       <p class="desc">皆さん！対人関係も「冬」を迎えていませんか？<br>この本では、人間関係の悩みを過去や他人の評価にとらわれるのではなく、「今の自分の行動」に注目して考えることの大切さを紹介しています。<br>過去にとらわれず、他人の評価に振り回されず、「今どうするか」を大事にすることがポイントです。<br>人間関係に悩んだときに、自分の考え方を整理するきっかけになる本です。</p>
-      <span class="tag">心理学</span>
+      <div class="tags">
+        <span class="tag">心理学</span>
+        <span class="tag">自己啓発</span>
+        <span class="tag">対人関係</span>
+      </div>
     </div>
   </section>
 </div>
